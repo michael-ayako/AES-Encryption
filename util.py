@@ -30,17 +30,32 @@ def create_key():
     KEYS = []
     for x in range(6):
         temp_key = random.randint(10000,65535)
-        print("[%s] - %s"%(x,int(temp_key)))
+        print("[%s] - %s\n"%(x,temp_key))
         KEYS.append(temp_key)
     try:
-        #KEY = int(input())
-        KEY = 4
+        KEY = int(input())
         return KEYS[KEY]
     except Exception as err:
         logging.error(err)
         exit()
 
-def file_converter(BITSMATRIX):
+#Converting file to text
+def file_converter_enc(BITSMATRIX):
+    BIT_TEMP = []
+    for x in BITSMATRIX:
+        temp = ''
+        for y in x:
+            for z in y:
+                temp += str(z)
+        BIT_TEMP.append(temp)
+    chars = []
+    for x in BIT_TEMP:
+        chars.append(chr(int(x,2)))
+    with open('msg.enc','w',encoding = 'utf-8') as f:
+        for x in chars:
+            f.write(x)
+
+def file_converter_dec(BITSMATRIX):
     BIT_TEMP = []
     for x in BITSMATRIX:
         temp = ''
@@ -51,9 +66,10 @@ def file_converter(BITSMATRIX):
     chars = []
     for x in BIT_TEMP:
         chars.append(chr(int(x,2)))
-    with open('output.enc','w',encoding = 'utf-8') as f:
+    with open('msg.txt','w',encoding = 'utf-8') as f:
         for x in chars:
             f.write(x)
+    
 
 #Quitting file
 def quit():
