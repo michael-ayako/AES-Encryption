@@ -1,34 +1,37 @@
-# Programming_Assignement2
+# INTRODUCTION
 
-Goal: write a program in either C, C++, Java, Python, or Perl to implement, on our server
-sp-cfsics.metrostate.edu, a simplified AES like encryption/decryption algorithm designed by
-you, which includes at least the following three strategies:
+This is a programming assignment for a cryptography class I am taking in Fall 2019. I am to emulate the the structure of AES encryption and how it works. You can go through the files that have been used, that have commentary on how everything in has been used
 
-1) XOR
-2) Bit circulate shift
-3) Substitution box
+## FILE DESCRIPTION
 
-§ Assumption: 16-bit plaintext/ciphertext block with a 16-bit key.
+- EncDec.py
+    This is the main file that hosts the main function
+- xored.py
+    This file hosts the XOR function
+- sbox.py 
+    This file performs the sbox functionality of the program
+- bitshift.py
+    This file performs bit circulate shifts on the data being encrypted
+- util.py
+    This performs basic functions, like creating the randomg key, file creation after encryption and decryption etc.
+--- TestPy.txt 
+    This is our sample text for encryption
+--- msg.enc
+    This is our encrypted file 
+--- msg.txt
+    This is the outfile after the decryption is performed
 
-§ Requirements:
+# HOWTO
 
-§ Your program should prompt for the plaintext/ciphertext input either from the command
-line, a window, or a data file;
+1. To use the file you must have your text to be encrypted in the same directory as the EncDec.py file (and just to be clear this includes xored.py, sbox.py, bitshift.py, util.py)
 
-§ Your program should prompt for the choice of keys;
+2. The command to Encrypt will be  
+    python EncDec.py -e 'filename' 
+    This will prompt for you to pick a key between 5 random numbers after which your file will be encrypted.
+    NOTE: This only works with Flatfiles
+3. The command to Decrypt will be
+    python EncDec.py -d 'filename'
+    This will prompt you to use the random number selected in step 2
+    NOTE: This will only work with the correct key and the 'msg.enc' created in step 2 above 
 
-§ Your program should display the corresponding ciphertext/plaintext after a plaintext/ciphertext block and a key are determined;
 
-§ Your program should provide the ability to allow the user to loop back to repeat your algorithm;
-
-§ Your program should be documented properly based on the requirements you learned from your programming courses.
-
-§ Turn in:
-
-§ The source code files and data files (if any);
-
-§ The screenshots of four sample runs of your program with two for encryptions and two for decryptions;
-
-§ A README file for explaining how to use/configure/install your program;
-
-§ A brief report (at least one page in length) on your algorithm in terms of how those three operations, XOR, bit circulate shift, and substitution box, are implemented, as well as your justification and assessment on your algorithm and implementation.
